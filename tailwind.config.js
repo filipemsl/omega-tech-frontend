@@ -5,7 +5,13 @@ module.exports = {
     extend: {
       colors: {
         footerGray: "#F3F3F5",
+        gray: {
+          light: '#F3F3F5',
+          DEFAULT: '#999999',
+          dark: '#666666',
+        }
       }
+
     },
   },
   variants: {
