@@ -4,19 +4,19 @@ import userImg from '../assets/user.svg'
 import { Sidebar, AddButton, ListButton, HelpButton, Title, LogoffButton, Container, Texts } from '../styles/DashboardStyle'
 import Modal from 'react-modal'
 import { AddModal } from '../components/AddModal';
+import { EditModal } from '../components/EditModal';
 
 const user = {
-  name: 'Filipe',
+  name: 'Adam',
 }
 
-interface NewProposalProps {
+interface AddModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export function Dashboard({ isOpen, onRequestClose }: NewProposalProps) {
+export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
 
-  let subtitle: any;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
