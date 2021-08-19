@@ -1,10 +1,11 @@
+import axios from "axios";
 
 
 
 export abstract class BaseConsumer {
 
-      base_api?: string
-    constructor(){
+     protected base_api?: string
+    constructor(base_api:string){
         this.base_api = process.env.API_BASE
 
     }
@@ -22,5 +23,7 @@ export abstract class BaseConsumer {
 
     }
 
-    
+    post = async function post(data:object, token:string,  end_point:string){
+        axios.post()
+    }
 }
