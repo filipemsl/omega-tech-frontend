@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
+import { Sucesso } from "../Sucesso";
 
 
 export function Login() {
@@ -23,8 +24,8 @@ export function Login() {
           <img src={passVisible ? Olho : OlhoFechado} alt="" /></button>
       </Container>
       <ButtonContainer>
-        <LoginButton onClick={UserNotFound}>Entrar</LoginButton>
-        <SignButton onClick={() => history.push('/dashboard')}>Cadastrar</SignButton>
+        <LoginButton type='submit' onClick={UserNotFound}>Entrar</LoginButton>
+        <SignButton onClick={() => (<Sucesso />)}>Cadastrar</SignButton>
         <ToastContainer position="top-center" />
       </ButtonContainer>
     </div >

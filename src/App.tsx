@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from "./pages/Home"
-import Dashboard from './pages/Dashboard';
+import { Home } from "./pages/Home"
+import { Dashboard } from './pages/Dashboard';
 import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
+
   );
 }
 

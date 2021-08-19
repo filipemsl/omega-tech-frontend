@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logoOmega from '../assets/logo-omega.svg'
 import userImg from '../assets/user.svg'
 import { Sidebar, AddButton, ListButton, HelpButton, Title, LogoffButton, Container, Texts } from '../styles/DashboardStyle'
+import Modal from 'react-modal'
+import { AddModal } from '../components/AddModal';
 
 const user = {
   name: 'Filipe',
 }
 
-const Dashboard: React.FC = () => {
+interface NewProposalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
+
+export function Dashboard({ isOpen, onRequestClose }: NewProposalProps) {
+
+  let subtitle: any;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
+
     <div className="bg-white">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        overlayClassName="react-modal-overlay"
+        className="react-modal-content"
+      >
+        <AddModal isOpen={modalIsOpen} onRequestClose={closeModal} />
+      </Modal>
       <div className="flex">
         {/* Barra do Logo */}
         <aside className="">
@@ -17,6 +46,7 @@ const Dashboard: React.FC = () => {
             <img src={logoOmega} alt="" width="240" />
           </Sidebar>
         </aside>
+
 
         <main className="m-8 p-10 w-full flex flex-wrap" id='conteudo'>
 
@@ -46,7 +76,7 @@ const Dashboard: React.FC = () => {
               <h1>Nova proposta</h1>
               <p>Faça uma cotação e verifique o valor da proposta</p>
             </Texts>
-            <AddButton>
+            <AddButton onClick={openModal}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 4.5C9.19891 4.5 9.38968 4.57902 9.53033 4.71967C9.67098 4.86032 9.75 5.05109 9.75 5.25V8.25H12.75C12.9489 8.25 13.1397 8.32902 13.2803 8.46967C13.421 8.61032 13.5 8.80109 13.5 9C13.5 9.19891 13.421 9.38968 13.2803 9.53033C13.1397 9.67098 12.9489 9.75 12.75 9.75H9.75V12.75C9.75 12.9489 9.67098 13.1397 9.53033 13.2803C9.38968 13.421 9.19891 13.5 9 13.5C8.80109 13.5 8.61032 13.421 8.46967 13.2803C8.32902 13.1397 8.25 12.9489 8.25 12.75V9.75H5.25C5.05109 9.75 4.86032 9.67098 4.71967 9.53033C4.57902 9.38968 4.5 9.19891 4.5 9C4.5 8.80109 4.57902 8.61032 4.71967 8.46967C4.86032 8.32902 5.05109 8.25 5.25 8.25H8.25V5.25C8.25 5.05109 8.32902 4.86032 8.46967 4.71967C8.61032 4.57902 8.80109 4.5 9 4.5ZM0 9C-1.76116e-08 7.8181 0.232792 6.64778 0.685084 5.55585C1.13738 4.46392 1.80031 3.47177 2.63604 2.63604C3.47177 1.80031 4.46392 1.13738 5.55585 0.685084C6.64778 0.232792 7.8181 0 9 0C10.1819 0 11.3522 0.232792 12.4442 0.685084C13.5361 1.13738 14.5282 1.80031 15.364 2.63604C16.1997 3.47177 16.8626 4.46392 17.3149 5.55585C17.7672 6.64778 18 7.8181 18 9C18 11.3869 17.0518 13.6761 15.364 15.364C13.6761 17.0518 11.3869 18 9 18C6.61305 18 4.32387 17.0518 2.63604 15.364C0.948211 13.6761 3.55683e-08 11.3869 0 9ZM9 1.5C7.01088 1.5 5.10322 2.29018 3.6967 3.6967C2.29018 5.10322 1.5 7.01088 1.5 9C1.5 10.9891 2.29018 12.8968 3.6967 14.3033C5.10322 15.7098 7.01088 16.5 9 16.5C10.9891 16.5 12.8968 15.7098 14.3033 14.3033C15.7098 12.8968 16.5 10.9891 16.5 9C16.5 7.01088 15.7098 5.10322 14.3033 3.6967C12.8968 2.29018 10.9891 1.5 9 1.5Z" fill="#3980FF" />
               </svg>Adicionar
@@ -89,5 +119,3 @@ const Dashboard: React.FC = () => {
     </div >
   )
 }
-
-export default Dashboard;

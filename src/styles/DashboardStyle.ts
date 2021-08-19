@@ -55,6 +55,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
+transition: all 0.2s;
 
 &:hover{
   background: #3980FF;
@@ -79,6 +80,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
+transition: all 0.2s;
 
 &:hover{
   background: #E16F1C;
@@ -103,9 +105,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
+transition: all 0.2s;
 
 &:hover{
-  background: #FF2E2E;
+  background: #FF4D4D;
   color: #fff;
 
   svg path {
@@ -126,9 +129,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
+transition: all 0.2s;
 
 &:hover{
-
+background: #FF5555;
 }
 `
 export const Container = styled.div`
