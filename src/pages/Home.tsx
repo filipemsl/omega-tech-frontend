@@ -10,11 +10,21 @@ import { Login } from "../components/Login/index"
 import { Cadastro } from '../components/Cadastro/index';
 import { Sucesso } from '../components/Sucesso';
 
-// import { Container } from './styles';
+
 
 export function Home() {
   const [tela, setTela] = useState(0);
 
+  function setTelaLogin() {
+    setTela(0)
+  }
+
+  function setTelaCadastro() {
+    setTela(1)
+  }
+  function telaSuccess() {
+    setTela(2)
+  }
   return (
 
     <div className="bg-white loginsize relative">
@@ -31,7 +41,9 @@ export function Home() {
           </div>
         </aside>
         <main id="conteudo">
-          <Login />
+          {tela === 0 && <Login onRequestSignUp={setTelaCadastro} />}
+          {tela === 1 && <Cadastro onRequestLogin={setTelaLogin} />}
+          {tela === 2 && <Sucesso />}
         </main>
       </div>
     </div>

@@ -9,8 +9,11 @@ import { useHistory } from "react-router";
 import { Sucesso } from "../Sucesso";
 import { useForm, SubmitHandler } from "react-hook-form";
 
+interface StartSignUp {
+  onRequestSignUp: () => void;
+}
 
-export function Login() {
+export function Login({ onRequestSignUp }: StartSignUp) {
 
   const history = useHistory();
   const UserNotFound = () => { toast("Usuário não cadastrado", { transition: Slide }); }
@@ -23,38 +26,53 @@ export function Login() {
 
   const handleInputEmail = (e: any) => {
     setEmail(e.target.value)
-    let check = email
-    console.log(check)
-
   };
 
   const handleInputSenha = (e: any) => {
     setSenha(e.target.value)
-    console.log(senha.length + 1)
   };
 
+  function testeSenha() {
+    if (senha.length < 8) {
+      setSenhaInvalida(true)
+    }
+  }
+
+  interface IFormInput {
+    email: string;
+    password: string;
+  }
+
+  const { register, handleSubmit } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
 
   return (
+
     <div className="maincontent shadow-lg rounded-3xl">
       <Title>Login</Title>
-      <form action="" className="justify-center">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Container>
-          <input type="text" placeholder="E-mail" value={email} onChange={handleInputEmail} className=" h-full w-full outline-none" />
+          <input type="text" placeholder="E-mail" {...register("email",)} className=" h-full w-full outline-none" />
           <img src={Invalid} alt="" title="O e-mail digitado é inválido" className={emailInvalido ? "" : "hidden"} />
         </Container>
 
         <Container>
-          <input type={passVisible ? 'password' : 'text'} value={senha} onChange={handleInputSenha} placeholder="Senha" className=" h-full w-full outline-none" />
+          <input type={passVisible ? 'password' : 'text'} {...register("password", {
+            minLength: {
+              value: 8,
+              message: 'A senha precisa de no mínimo 8 caracteres' // JS only: <p>error message</p> TS only support string
+            }
+          })} placeholder="Senha" className=" h-full w-full outline-none" />
           <button type="button" className="w-6" onClick={() => setPassVisible(!passVisible)}>
             <img src={passVisible ? Olho : OlhoFechado} alt="" /></button>
           <img src={Invalid} alt="" title="A senha digitada é inválida" className={senhaInvalida ? "" : "hidden"} />
         </Container>
 
-        <ButtonContainer>
-          <LoginButton type='button' onClick={UserNotFound}>Entrar</LoginButton>
-          <SignButton onClick={() => (<Sucesso />)}>Cadastrar</SignButton>
+        <div className="flex justify-center align-center">
+          <LoginButton type='submit'>Entrar</LoginButton>
+          <SignButton onClick={onRequestSignUp}>Cadastrar</SignButton>
           <ToastContainer position="top-center" />
-        </ButtonContainer>
+        </div>
       </form>
 
     </div >
