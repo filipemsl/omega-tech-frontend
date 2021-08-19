@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import logoOmega from '../assets/logo-omega.svg'
 import userImg from '../assets/user.svg'
 import { Sidebar, LogoffButton, Texts } from '../styles/DashboardStyle'
-import Modal from 'react-modal'
-import { AddModal } from '../components/AddModal';
+
 import { EditModal } from '../components/EditModal';
 import { DashboardOptions } from '../components/DashboardOptions';
 import { ProposalList } from '../components/PropostalList';
 
 const user = {
-  name: 'Adam',
+  name: 'Filipe da Silva Lima',
 }
 
 interface AddModalProps {
@@ -17,30 +16,26 @@ interface AddModalProps {
   onRequestClose: () => void;
 }
 
+function returnToDashboard() {
+
+}
+
 export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  function openModal() {
-    setIsOpen(true);
+  const [renderDashboardChild, setRenderDashboardChild] = useState(0);
+
+  function returnToDashboard() {
+    setRenderDashboardChild(0)
+  }
+  function goToList() {
+    setRenderDashboardChild(1)
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-  const [renderDashboardChild, setRenderDashboardChild] = useState(1);
   return (
 
     <div className="bg-white">
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        overlayClassName="react-modal-overlay"
-        className="react-modal-content"
-      >
-        <AddModal isOpen={modalIsOpen} onRequestClose={closeModal} />
-      </Modal>
+
       <div className="flex">
         {/* Barra do Logo */}
         <aside className="">
@@ -51,7 +46,6 @@ export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
 
 
         <main className="m-8 p-10 w-full flex flex-wrap" id='conteudo'>
-
           <section className="flex justify-end bg-white w-full">
             <img src={userImg} className="pr-8" alt="" />
             <Texts className="pr-8">
@@ -68,9 +62,8 @@ export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
               Logoff
             </LogoffButton>
           </section>
-
-          {renderDashboardChild === 0 && <DashboardOptions />}
-          {renderDashboardChild === 1 && <ProposalList />}
+          {renderDashboardChild === 0 && <DashboardOptions onRequestList={goToList} />}
+          {renderDashboardChild === 1 && <ProposalList onRequestReturn={returnToDashboard} />}
 
         </main>
       </div>

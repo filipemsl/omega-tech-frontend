@@ -1,7 +1,13 @@
 import { Texts } from "../../styles/DashboardStyle";
 import { Container, Title, AddButton, CancelButton } from "./styles";
+import { Admitted } from '../ProposalOptions/Admitted'
+import { EditProposal } from "../ProposalOptions/Edit";
 
-export function ProposalList() {
+interface DashReturn {
+  onRequestReturn: () => void;
+}
+
+export function ProposalList({ onRequestReturn }: DashReturn) {
   return (
     <>
       <section className='w-full'>
@@ -13,6 +19,8 @@ export function ProposalList() {
             <h1>Nova proposta</h1>
             <p>Faça uma cotação e verifique o valor da proposta</p>
           </Texts>
+          <Admitted />
+          <EditProposal />
         </Container>
 
         <Container className="mt-8 p-8 shadow-lg">
@@ -44,7 +52,7 @@ export function ProposalList() {
       </div>
       <div className="flex w-full justify-end gap-10">
         <AddButton>Adicionar</AddButton>
-        <CancelButton>Voltar</CancelButton>
+        <CancelButton onClick={onRequestReturn}>Voltar</CancelButton>
       </div>
     </>
   )
