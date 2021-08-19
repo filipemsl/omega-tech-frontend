@@ -1,4 +1,4 @@
-import { Container, InputContainer, SmallContainer, RadioContainer, AddButton as AddButton, CancelButton } from "./styles";
+import { Container, InputContainer, SmallContainer, RadioContainer, AddButton, CancelButton } from "./styles";
 import logoOmega from '../../assets/logo-omega.svg'
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import '../../styles/DatePicker.css';

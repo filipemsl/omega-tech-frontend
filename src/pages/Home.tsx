@@ -15,7 +15,6 @@ import { Sucesso } from '../components/Sucesso';
 export function Home() {
   const [tela, setTela] = useState(0);
 
-
   return (
 
     <div className="bg-white loginsize relative">
