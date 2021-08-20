@@ -42,8 +42,8 @@ export function Home() {
         </aside>
         <main id="conteudo">
           {tela === 0 && <Login onRequestSignUp={setTelaCadastro} />}
-          {tela === 1 && <Cadastro onRequestLogin={setTelaLogin} />}
-          {tela === 2 && <Sucesso />}
+          {tela === 1 && <Cadastro onRequestLogin={setTelaLogin} handleSuccess={telaSuccess} />}
+          {tela === 2 && <Sucesso requestLogin={setTelaLogin} />}
         </main>
       </div>
     </div>

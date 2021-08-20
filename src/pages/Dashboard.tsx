@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logoOmega from '../assets/logo-omega.svg'
 import userImg from '../assets/user.svg'
 import { Sidebar, LogoffButton, Texts } from '../styles/DashboardStyle'
-
 import { EditModal } from '../components/EditModal';
 import { DashboardOptions } from '../components/DashboardOptions';
 import { ProposalList } from '../components/PropostalList';
 import { useHistory } from 'react-router';
-
-
-const user = {
-  name: 'Filipe da Silva Lima',
-}
 
 interface AddModalProps {
   isOpen: boolean;
@@ -19,10 +13,10 @@ interface AddModalProps {
 }
 
 function returnToDashboard() {
-
 }
 
 export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
+  // const { handleLogout } = useContext(Context);
 
   const history = useHistory();
   const [renderDashboardChild, setRenderDashboardChild] = useState(0);
@@ -52,7 +46,8 @@ export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
             <img src={userImg} className="pr-8" alt="" />
             <Texts className="pr-8">
               <p>Boas vindas,</p>
-              <h6>{user.name}</h6>
+              <h6></h6>
+              ))
             </Texts>
             <LogoffButton onClick={() => history.push('/')}>
               <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">

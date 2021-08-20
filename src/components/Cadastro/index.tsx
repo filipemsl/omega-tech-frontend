@@ -9,8 +9,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 interface HandleState {
   onRequestLogin: () => void;
+  handleSuccess: () => void;
 }
-export function Cadastro({ onRequestLogin }: HandleState) {
+export function Cadastro({ onRequestLogin, handleSuccess }: HandleState) {
 
   const UserNotFound = () => { toast("Usuário não cadastrado", { transition: Slide }); }
   const [passVisible, setPassVisible] = useState(true);
@@ -79,7 +80,7 @@ export function Cadastro({ onRequestLogin }: HandleState) {
         </Container>
 
         <div className="flex justify-center align-center">
-          <SignButton>Cadastrar</SignButton>
+          <SignButton onClick={handleSuccess}>Cadastrar</SignButton>
         </div>
         <LoginText>Já possui uma conta? <button onClick={onRequestLogin}>Fazer login</button></LoginText>
       </form>

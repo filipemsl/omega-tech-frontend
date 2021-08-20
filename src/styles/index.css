@@ -27,7 +27,7 @@ body {
 .maincontent {
   margin: 64px;
   background: #fff;
-  height: 550px;
+  height: 480px;
   width: 450px; 
   display: flex;
   flex-direction: column;

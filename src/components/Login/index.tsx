@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
 import { Sucesso } from "../Sucesso";
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import { UserConsumer } from '../../consumers/user.consumer'
 interface StartSignUp {
   onRequestSignUp: () => void;
 }
@@ -42,12 +42,14 @@ export function Login({ onRequestSignUp }: StartSignUp) {
     email: string;
     password: string;
   }
-
+  const userConsumer = new UserConsumer();
   const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = data => {
+    const use = data;
+    userConsumer.login(use.email, use.password)
+  };
 
   return (
-
     <div className="maincontent shadow-lg rounded-3xl">
       <Title>Login</Title>
       <form onSubmit={handleSubmit(onSubmit)}>
