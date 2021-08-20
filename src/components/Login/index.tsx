@@ -47,6 +47,7 @@ export function Login({ onRequestSignUp }: StartSignUp) {
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const use = data;
     userConsumer.login(use.email, use.password)
+    console.log(data)
   };
 
   return (
