@@ -14,7 +14,7 @@ const valor: number = 1500;
 
 export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
   const [nome, setNome] = useState('')
-  const [carga, setCarga] = useState(0)
+  const [carga, setCarga] = useState([])
   const [consumo, setConsumo] = useState(0)
   const [tipo, setTipo] = useState('')
   const [submercado, setSubmercado] = useState('')
@@ -22,6 +22,8 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
   const [valueFim, setValueFim] = useState(new Date());
   function handleCreateNewProposal(event: FormEvent) {
     event.preventDefault();
+
+
     const data = {
       nome,
       carga,
@@ -48,7 +50,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
               <h6 className="colorSelect">Carga contratada</h6>
               <SmallContainer>
 
-                <input type="number" value={carga} onChange={event => setCarga(Number(event.target.value))} className="w-full" />
+                <input type="number" value={carga} className="w-full" />
               </SmallContainer>
             </div>
             <div className="text-center pt-3 m-0">
@@ -113,11 +115,11 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
           </div>
 
           <div className=' flex items-center justify-center text-center p-0 mt-4'>
-            <h6 className="colorSelect mr-2">Valor:</h6>
+            {/* <h6 className="colorSelect mr-2">Valor:</h6>
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
-            }).format(valor)}
+            }).format(valor)} */}
           </div>
           <div className='flex items-center justify-center text-center mt-5 gap-12'>
             <AddButton type="submit">Adicionar</AddButton>

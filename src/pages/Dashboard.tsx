@@ -15,13 +15,19 @@ interface AddModalProps {
   onRequestClose: () => void;
 }
 
+interface decodedToken {
+  email?: string,
+  exp?: number,
+  iat?: number,
+}
+
 
 export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
 
 
   const token: string = JSON.parse(localStorage.getItem('access_token')!);
-  const decoded_token = jwtDecode<JwtPayload>(token);
-
+  const decoded_token: decodedToken = jwtDecode<JwtPayload>(token);
+  console.log(decoded_token);
   const { handleLogout } = useContext(Context);
   const [renderDashboardChild, setRenderDashboardChild] = useState(0);
 
@@ -49,7 +55,7 @@ export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
             <img src={userImg} className="pr-8" alt="" />
             <Texts className="pr-8">
               <p>Boas vindas,</p>
-              <h6>{ }</h6>
+              <h6>{decoded_token.email}</h6>
             </Texts>
             <LogoffButton onClick={handleLogout}>
               <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">

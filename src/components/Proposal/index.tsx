@@ -20,6 +20,12 @@ export function ProposalItem({ id, initialDate, finalDate, charges, totalconsump
   function setAdmit() {
     setContratada(true)
   }
+  function setEdit(id: string) {
+
+  }
+  function deleteProposal(id: string) {
+
+  }
   return (
 
     <Container className="p-8 shadow-lg">

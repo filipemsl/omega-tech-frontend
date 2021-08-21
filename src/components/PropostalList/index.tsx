@@ -31,7 +31,7 @@ export function ProposalList({ onRequestReturn }: DashReturn) {
   const [proposals, setProposals] = useState<Proposal[]>([]);
   useEffect(() => {
 
-    api.get('proposals',
+    api.get('/proposals',
       { headers: { Authorization: `Bearer ${tokenData}` } }
     ).then(response => setProposals(response.data))
 
@@ -61,7 +61,6 @@ export function ProposalList({ onRequestReturn }: DashReturn) {
 
       {/* Botões de Ação */}
       <div className="flex w-full justify-end gap-10">
-        <AddButton>Adicionar</AddButton>
         <CancelButton onClick={onRequestReturn}>Voltar</CancelButton>
       </div>
 
