@@ -7,6 +7,18 @@ font-size: 2.5rem;
 font-weight: bold;
 `
 
+export const DataInput = styled.input`
+width: 300px;
+height: 300px;
+border: 1px solid #666666;
+border-radius: 0.625rem;
+padding: 0.3rem;
+::placeholder {
+  color:#999999;
+  font-weight: 500;
+}
+`
+
 
 export const Container = styled.div`
 width:300px;

@@ -38,7 +38,7 @@ body {
 .maincontentCadastro {
   margin: 64px;
   background: #fff;
-  height: 645px;
+  height: 550px;
   width: 450px; 
   display: flex;
   flex-direction: column;
