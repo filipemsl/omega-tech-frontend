@@ -13,8 +13,8 @@ interface DashReturn {
 
 interface Proposal {
   id: string;
-  initialDate: string;
-  finalDate: string;
+  initialDate: Date;
+  finalDate: Date;
   charges: [];
   totalconsumption: string;
   supplytype: string;

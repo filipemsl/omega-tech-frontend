@@ -5,8 +5,8 @@ import { Title, Container, Texts } from './style'
 
 type ProposalProps = {
   id: string;
-  initialDate: string;
-  finalDate: string;
+  initialDate: Date;
+  finalDate: Date;
   charges: any;
   totalconsumption: string;
   supplytype: string;
@@ -53,11 +53,11 @@ export function ProposalItem({ id, initialDate, finalDate, charges, totalconsump
           </Texts>
           <Texts>
             <h6>Data de Início:</h6>
-            <p>{initialDate}</p>
+            <p>{new Intl.DateTimeFormat('pt-BR').format((initialDate))}</p>
           </Texts>
           <Texts>
             <h6>Data de Fim:</h6>
-            <p>{finalDate}</p>
+            <p>{new Intl.DateTimeFormat('pt-BR').format((finalDate))}</p>
           </Texts>
         </div>
 
