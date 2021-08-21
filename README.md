@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Projeto Final Omega Tech
+Projeto final do programa de treinamento da Omega Energia com a Gama Academy.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
+O projeto envolveu a produção de um website baseado em volta da premissa de mercado da Omega Energia, envolvendo a criação de usuários e a contratação de pacotes de energia elétrica.
 
-## Available Scripts
+### Principais funcionalidades
+Realização de cadastro e login de usuários.<br/>
+Criação, manipulação e contratação de propostas de compra de energia.<br/>
+Restrição de acesso pelos usuários à propostas alheias, podendo interagir apenas com as propostas criadas por si mesmos.<br/>
 
-In the project directory, you can run:
+## Back-end
+API Rest baseada em NestJs.
+#### Recursos utilizados
+O tipo de banco de dados utilizado foi Postgres, com TypeORM para a persistência de dados.<br/>
+A segurança (autenticações e autorizações) foi feita através de JWT.<br/>
+A documentação da API foi realizada via Swagger.<br/>
+#### Hospedagem
+A API está hospedada no Heroku e o banco de dados na Amazon Web Service.
 
-### `yarn start`
+## Front-End
+Front-end feito com Create-React-App e gerenciador de pacotes Yarn.
+#### Recursos utilizados
+Foi usado o framework CSS Tailwind e a biblioteca Styled-Components para estilização.<br/>
+Gerenciamento de Rotas com o React-Router-Dom e o React-Router.<br/>
+Funcionalidades específicas feitas com  React Modal e React-Date-Picker.<br/>
+Foram utilizados as ContextsAPIs e os hooks useState, useEffect e useContext.<br/>
+#### Hospedagem
+O front-end está hospedado no Heroku.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Integração do front-end com o back-end 
+Feita através da biblioteca Axios.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Equipe e organização de tarefas
+#### Homero Galvão
+Configuração da base de dados na AWS;<br/>
+Configuração das variáveis de ambiente da API no Heroku;<br/>
+Configuração do método de login para evitar retorno de token para credenciais vazias;<br/>
+Criação de classes utilitárias para integração do front-end com o back-end.
 
-### `yarn test`
+#### Filipe Lima
+Criação da interface da aplicação;<br/>
+Criação do dashboard;<br/>
+Criação dos componentes de login e cadastro (front-end);<br/>
+Criação dos modais;<br/>
+Criação da Home;<br/>
+Listagem das propostas (front-end);<br/>
+Criação dos forms (front-end);<br/>
+Configuração do Axios no front-end;<br/>
+Realização do deploy do front-end no Heroku.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Vinícius Rebouças
+Cadastro, login e manipulação de usuários (back-end);<br/>
+Cadastro, login e manipulação de propostas (back-end);<br/>
+Relacionamento entre entidades;<br/>
+Criação da calculadora de propostas;<br/>
+Implementação de autenticação JWT;<br/>
+Implementação de autorização (limitar usuários as suas propostas utilizando o JWT);<br/>
+Implementação do Swagger;<br/>
+Realização do deploy da API no Heroku.
 
-### `yarn build`
+## Opcionais
+Os opcionais de extensão de período (oferecimento de benefício de preço de acordo com a extensão do período de uma proposta) e a responsividade em dispositivos móveis foram cumpridos.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Repositório com o backend
+https://github.com/viniciuscnr/projeto-final-omega
