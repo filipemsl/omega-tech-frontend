@@ -27,7 +27,7 @@ export function Dashboard({ isOpen, onRequestClose }: AddModalProps) {
 
   const token: string = JSON.parse(localStorage.getItem('access_token')!);
   const decoded_token: decodedToken = jwtDecode<JwtPayload>(token);
-  console.log(decoded_token);
+
   const { handleLogout } = useContext(Context);
   const [renderDashboardChild, setRenderDashboardChild] = useState(0);
 
