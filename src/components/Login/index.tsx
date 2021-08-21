@@ -2,20 +2,19 @@ import { Container, Title, SignButton, LoginButton, ButtonContainer, DataInput }
 import Olho from '../../assets/eye.svg'
 import Invalid from '../../assets/invalid.svg'
 import OlhoFechado from '../../assets/closeeye.svg'
-import { FormEvent, useState } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router";
-import { Sucesso } from "../Sucesso";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { UserConsumer } from '../../consumers/user.consumer'
+import { Context } from "../../contexts/AuthContext";
 
 interface StartSignUp {
   onRequestSignUp: () => void;
 }
 
 export function Login({ onRequestSignUp }: StartSignUp) {
-
+  const { authenticated, handleLogin } = useContext(Context);
   const history = useHistory();
 
   const UserNotFound = () => { toast("Usuário não cadastrado", { transition: Slide }); }
@@ -23,7 +22,6 @@ export function Login({ onRequestSignUp }: StartSignUp) {
   const [passVisible, setPassVisible] = useState(true);
   const [emailInvalido, setEmailInvalido] = useState(false);
   const [senhaInvalida, setSenhaInvalida] = useState(false);
-
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -46,14 +44,9 @@ export function Login({ onRequestSignUp }: StartSignUp) {
     password: string;
   }
 
-  const userConsumer = new UserConsumer();
   const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
-    let token;
-    const use = data;
-    token = userConsumer.login(use.email, use.password)
-    console.log(data)
-    console.log(token)
+    handleLogin(data)
   };
 
   return (

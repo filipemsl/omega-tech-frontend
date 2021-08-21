@@ -8,28 +8,28 @@ export default function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const access_token = localStorage.getItem('access_token');
 
-    if (token) {
-      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+    if (access_token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(access_token)}`;
       setAuthenticated(true);
     }
 
     setLoading(false);
   }, []);
 
-  async function handleLogin() {
-    const { data: { token } } = await api.post('/auth/login');
+  async function handleLogin(e) {
+    const { data: { access_token } } = await api.post('/auth/login', e);
 
-    localStorage.setItem('token', JSON.stringify(token));
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    localStorage.setItem('access_token', JSON.stringify(access_token));
+    api.defaults.headers.Authorization = `Bearer ${access_token}`;
     setAuthenticated(true);
     history.push('/dashboard');
   }
 
   function handleLogout() {
     setAuthenticated(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
     api.defaults.headers.Authorization = undefined;
     history.push('/');
   }

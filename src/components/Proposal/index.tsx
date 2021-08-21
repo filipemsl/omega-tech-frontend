@@ -3,19 +3,19 @@ import { Admitted } from "../ProposalOptions/Admitted"
 import { EditProposal } from "../ProposalOptions/Edit"
 import { Title, Container, Texts } from './style'
 
-const data = {
-  nome: 'Santander',
-  consumo: 68,
-  consumoTotal: 28500,
-  fonteEnergia: "Renovável",
-  submercado: "Sul",
-  dataInicio: '21/06/2021',
-  dataFim: '21/06/2022',
-  id: "d3a58e7f-a11f-449b-b910-0aabc597c6b7",
-  valorProposta: 120000,
+type ProposalProps = {
+  id: string;
+  initialDate: string;
+  finalDate: string;
+  charges: any;
+  totalconsumption: string;
+  supplytype: string;
+  hired: boolean;
+  proposalvalue: number;
+  submarket: string;
 }
 
-export function ProposalItem() {
+export function ProposalItem({ id, initialDate, finalDate, charges, totalconsumption, supplytype, hired, proposalvalue, submarket }: ProposalProps) {
   const [contratada, setContratada] = useState(false);
   function setAdmit() {
     setContratada(true)
@@ -23,57 +23,54 @@ export function ProposalItem() {
   return (
 
     <Container className="p-8 shadow-lg">
-      <Title>{data.nome}</Title>
       <div className="pt-5 flex gap-24">
 
         <div className="flex flex-col gap-5">
           <Texts>
-            <h6>Consumo (kWh):</h6>
-            <p>{data.consumo}</p>
+            <h6>Cargas:</h6>
+            <p>{charges.toString()}</p>
           </Texts>
           <Texts>
             <h6>Consumo total (kW):</h6>
-            <p>{new Intl.NumberFormat('pt-BR', {
-              style: 'decimal',
-            }).format(data.consumoTotal)}</p>
+            <p>{totalconsumption}</p>
           </Texts>
           <Texts>
             <h6>Fonte de Energia:</h6>
-            <p>{data.fonteEnergia}</p>
+            <p>{supplytype}</p>
           </Texts>
         </div>
 
         <div className="flex flex-col gap-5">
           <Texts>
             <h6>Submercado</h6>
-            <p>{data.submercado}</p>
+            <p>{submarket}</p>
           </Texts>
           <Texts>
-            <h6>Data de início:</h6>
-            <p>{data.dataInicio}</p>
+            <h6>Data de Início:</h6>
+            <p>{initialDate}</p>
           </Texts>
           <Texts>
             <h6>Data de Fim:</h6>
-            <p>{data.dataFim}</p>
+            <p>{finalDate}</p>
           </Texts>
         </div>
 
         <div className="flex flex-col gap-5">
           <Texts>
             <h6>ID da proposta:</h6>
-            <p>{data.id}</p>
+            <p>{id}</p>
           </Texts>
           <Texts>
             <h6>Valor da proposta:</h6>
             <p>{new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
-            }).format(data.valorProposta)}</p>
+            }).format(proposalvalue)}</p>
           </Texts>
         </div>
       </div>
       <div className="flex w-full justify-end">
-        {contratada ? <Admitted /> : <EditProposal admitButtonClick={setAdmit} />}
+        {hired ? <Admitted /> : <EditProposal admitButtonClick={setAdmit} />}
       </div>
 
     </Container>

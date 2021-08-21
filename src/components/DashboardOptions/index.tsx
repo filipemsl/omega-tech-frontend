@@ -1,15 +1,15 @@
 import { Texts } from "../../styles/DashboardStyle";
 import { AddButton, Container, HelpButton, ListButton, Title } from "./styles";
 import Modal from 'react-modal'
-import { AddModal } from '../../components/AddModal'
+import { AddModal } from '../AddModal'
 import { useState } from "react";
+import jwt_decode, { JwtPayload } from 'jwt-decode';
 
 interface GoList {
   onRequestList: () => void;
 }
-
-
-
+let tokenData = localStorage.getItem('access_token')
+console.log(tokenData)
 
 export function DashboardOptions({ onRequestList }: GoList) {
   const [modalIsOpen, setIsOpen] = useState(false);
