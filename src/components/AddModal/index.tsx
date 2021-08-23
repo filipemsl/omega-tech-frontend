@@ -32,8 +32,12 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
     carga,
     companyname,
   })
+
   function addValor() {
     charges.push(chargesObj)
+    charges.shift()
+    console.log(charges)
+    return charges
     CargaSuccess()
   }
 
@@ -51,7 +55,6 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
       submarket,
       totalconsumption,
     })
-    console.log(data)
 
     api.post('/proposals', data, { headers: { Authorization: `Bearer ${tokenData}` } })
       .then(ProposalSuccess, onRequestClose)
