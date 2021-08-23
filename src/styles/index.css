@@ -55,7 +55,6 @@ body {
 .banner {
   flex:7;
   color: #fff;
-  display:flex; 
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;

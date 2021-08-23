@@ -33,6 +33,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
     CargaSuccess()
   }
 
+  console.log(companyname)
   function handleCreateNewProposal(event: FormEvent) {
     event.preventDefault();
 

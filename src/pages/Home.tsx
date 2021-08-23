@@ -29,7 +29,7 @@ export function Home() {
 
     <div className="bg-white loginsize relative">
       <div id="loginpage">
-        <aside className="banner">
+        <aside className="banner hidden lg:flex">
           <img src={logoOmega} alt="" width="240" />
           <img src={fotoBanner} alt="Ilustração simbolizando perguntas e respostas" width="650" className="rounded-3xl" />
           <div className="icons">

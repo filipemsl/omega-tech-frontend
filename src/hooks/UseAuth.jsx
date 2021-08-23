@@ -10,7 +10,7 @@ export default function useAuth() {
   useEffect(() => {
     const access_token = localStorage.getItem('access_token');
 
-    if (access_token != undefined) {
+    if (access_token !== undefined) {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(access_token)}`;
       setAuthenticated(true);
     }
