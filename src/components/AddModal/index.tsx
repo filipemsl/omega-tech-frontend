@@ -18,18 +18,22 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
   const ProposalSuccess = () => { toast("Proposta cadastrada com sucesso", { transition: Slide }); }
   const CargaSuccess = () => { toast("Carga adicionada com sucesso!", { transition: Slide }); }
   const ProposalError = () => { toast("Erro, tente novamente", { transition: Slide }); }
-  let obj = []
+  let charges = [{}]
   const [companyname, setCompanyname] = useState('')
   const [carga, setCarga] = useState(0);
-  const [charges, setCharges] = useState([])
-  const [kwhconsumption, setKwhconsumption] = useState(0)
+
+  const [totalconsumption, setKwhconsumption] = useState(0)
   const [supplytype, setSupplytype] = useState('')
   const [submarket, setSubmarket] = useState('')
   const [initialdate, setInitialDate] = useState(new Date());
   const [finaldate, setFinalDate] = useState(new Date());
 
+  const chargesObj = new Object({
+    carga,
+    companyname,
+  })
   function addValor() {
-    obj.push({ carga, companyname })
+    charges.push(chargesObj)
     CargaSuccess()
   }
 
@@ -39,14 +43,15 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
 
     let token = localStorage.getItem('access_token'!)
     let tokenData = token?.replace(/['"]+/g, '')
-
-    const data = {
+    const data = new Object({
       initialdate,
       finaldate,
       charges,
       supplytype,
       submarket,
-    }
+      totalconsumption,
+    })
+    console.log(data)
 
     api.post('/proposals', data, { headers: { Authorization: `Bearer ${tokenData}` } })
       .then(ProposalSuccess, onRequestClose)
@@ -84,7 +89,7 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
             <div className="text-center pt-3 m-0">
               <h6 className="colorSelect">Consumo total</h6>
               <SmallContainer>
-                <input type="number" value={kwhconsumption} onChange={event => setKwhconsumption(parseInt(event.target.value))} className="w-full align-center" />
+                <input type="number" value={totalconsumption} onChange={event => setKwhconsumption(parseInt(event.target.value))} className="w-full align-center" />
               </SmallContainer>
             </div>
           </div>
