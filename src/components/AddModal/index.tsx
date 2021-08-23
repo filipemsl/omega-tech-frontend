@@ -35,10 +35,8 @@ export function AddModal({ isOpen, onRequestClose }: AddModalProps) {
 
   function addValor() {
     charges.push(chargesObj)
-    charges.shift()
-    console.log(charges)
-    return charges
     CargaSuccess()
+    console.log(charges)
   }
 
   console.log(companyname)
